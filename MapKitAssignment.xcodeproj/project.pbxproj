@@ -12,6 +12,10 @@
 		91333DC8216954B70091B5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91333DC6216954B70091B5F1 /* Main.storyboard */; };
 		91333DCA216954B90091B5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91333DC9216954B90091B5F1 /* Assets.xcassets */; };
 		91333DCD216954B90091B5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91333DCB216954B90091B5F1 /* LaunchScreen.storyboard */; };
+		91333DD8216957E30091B5F1 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91333DD7216957E30091B5F1 /* background.jpg */; };
+		91333DDA216959170091B5F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91333DD9216959170091B5F1 /* MapViewController.swift */; };
+		91333DDD21695A9A0091B5F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91333DDC21695A9A0091B5F1 /* CoreLocation.framework */; };
+		91333DDF21695AA10091B5F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91333DDE21695AA10091B5F1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		91333DC9216954B90091B5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91333DCC216954B90091B5F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91333DCE216954B90091B5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91333DD7216957E30091B5F1 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		91333DD9216959170091B5F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		91333DDC21695A9A0091B5F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		91333DDE21695AA10091B5F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91333DDF21695AA10091B5F1 /* MapKit.framework in Frameworks */,
+				91333DDD21695A9A0091B5F1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +50,7 @@
 			children = (
 				91333DC1216954B70091B5F1 /* MapKitAssignment */,
 				91333DC0216954B70091B5F1 /* Products */,
+				91333DDB21695A990091B5F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +65,49 @@
 		91333DC1216954B70091B5F1 /* MapKitAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				91333DC2216954B70091B5F1 /* AppDelegate.swift */,
-				91333DC4216954B70091B5F1 /* ViewController.swift */,
-				91333DC6216954B70091B5F1 /* Main.storyboard */,
+				91333DD7216957E30091B5F1 /* background.jpg */,
+				91333DD6216954FE0091B5F1 /* Classes */,
+				91333DD5216954F60091B5F1 /* Storyboards */,
+				91333DD4216954DA0091B5F1 /* View Controllers */,
 				91333DC9216954B90091B5F1 /* Assets.xcassets */,
-				91333DCB216954B90091B5F1 /* LaunchScreen.storyboard */,
 				91333DCE216954B90091B5F1 /* Info.plist */,
 			);
 			path = MapKitAssignment;
+			sourceTree = "<group>";
+		};
+		91333DD4216954DA0091B5F1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				91333DC4216954B70091B5F1 /* ViewController.swift */,
+				91333DD9216959170091B5F1 /* MapViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		91333DD5216954F60091B5F1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				91333DC6216954B70091B5F1 /* Main.storyboard */,
+				91333DCB216954B90091B5F1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		91333DD6216954FE0091B5F1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				91333DC2216954B70091B5F1 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		91333DDB21695A990091B5F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91333DDE21695AA10091B5F1 /* MapKit.framework */,
+				91333DDC21695A9A0091B5F1 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91333DCD216954B90091B5F1 /* LaunchScreen.storyboard in Resources */,
+				91333DD8216957E30091B5F1 /* background.jpg in Resources */,
 				91333DCA216954B90091B5F1 /* Assets.xcassets in Resources */,
 				91333DC8216954B70091B5F1 /* Main.storyboard in Resources */,
 			);
@@ -136,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91333DC5216954B70091B5F1 /* ViewController.swift in Sources */,
+				91333DDA216959170091B5F1 /* MapViewController.swift in Sources */,
 				91333DC3216954B70091B5F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
