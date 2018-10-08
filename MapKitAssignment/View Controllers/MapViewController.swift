@@ -160,7 +160,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
                                 {
                                     self.myMapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
                                     self.myMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-                                    self.routeSteps.removeAll()
+                                    
                                     for step in route.steps {
                                         self.routeSteps.append(step.instructions)
                                     }
@@ -207,7 +207,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
                                 {
                                     self.myMapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
                                     self.myMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-                                    self.routeSteps.removeAll()
+                                    
                                     for step in route.steps {
                                         self.routeSteps.append(step.instructions)
                                     }
