@@ -59,6 +59,9 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         self.myMapView.addAnnotation(dropPin)
         self.myMapView.selectAnnotation(dropPin, animated: true)
     
+        let circle = MKCircle(center: initialLocation.coordinate, radius: regionRadius)
+        self.myMapView.addAnnotation(circle)
+        self.myMapView.selectAnnotation(circle, animated: true)
 
         
     }
