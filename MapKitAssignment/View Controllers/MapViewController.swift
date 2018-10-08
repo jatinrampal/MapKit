@@ -35,6 +35,9 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
     var coordinate2 : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var location2 : CLLocation = CLLocation(latitude: 0, longitude: 0)
     
+    var coordinate3 : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var location3 : CLLocation = CLLocation(latitude: 0, longitude: 0)
+    
     let regionRadius : CLLocationDistance = 1000
     func centerMapOnLocation(location : CLLocation){
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
@@ -169,9 +172,57 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
                     }
             })
             break;
+            
+        case 2:
+            geocoder.geocodeAddressString(locEnteredText!, completionHandler:
+                {
+                    (placemarks, error) -> Void in
+                    if(error != nil){
+                        print("Error: ", error)
+                    }
+                    
+                    if let placemark = placemarks?.first{
+                        self.coordinate3 = placemark.location!.coordinate
+                        self.location3 = CLLocation(latitude : self.coordinate3.latitude, longitude : self.coordinate3.longitude)
+                        self.centerMapOnLocation(location: self.location3)
+                        
+                        let dropPin = MKPointAnnotation()
+                        dropPin.coordinate = self.coordinate3
+                        dropPin.title = placemark.name
+                        self.myMapView.addAnnotation(dropPin)
+                        self.myMapView.selectAnnotation(dropPin, animated: true)
+                        
+                        let request = MKDirections.Request()
+                        request.source = MKMapItem(placemark: MKPlacemark(coordinate: self.coordinate2, addressDictionary: nil))
+                        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: self.coordinate3, addressDictionary: nil))
+                        
+                        request.requestsAlternateRoutes = false
+                        request.transportType = .automobile
+                        
+                        let directions = MKDirections(request: request)
+                        directions.calculate(completionHandler:
+                            {
+                                [unowned self] response, error in
+                                for route in (response?.routes)!
+                                {
+                                    self.myMapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                                    self.myMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                                    self.routeSteps.removeAll()
+                                    for step in route.steps {
+                                        self.routeSteps.append(step.instructions)
+                                    }
+                                    self.myTableView.reloadData()
+                                }
+                            }
+                            
+                        )
+                    }
+            })
+            break;
         default:
             break
         }
+        
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
