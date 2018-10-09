@@ -77,10 +77,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
       /*  let overlays = myMapView.overlays
         myMapView.removeOverlays(overlays) */
         
-        
-        
-        
-        
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
@@ -117,6 +113,8 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
                             {
                                 self.myMapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
                                 self.myMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                                
+                                //remove Steps only the first time i.e. from Source to Waypoint 1
                                 self.routeSteps.removeAll()
                                 for step in route.steps {
                                     self.routeSteps.append(step.instructions)
